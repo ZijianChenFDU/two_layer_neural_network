@@ -5,6 +5,13 @@
 
 本项目旨在使用numpy实现一个两层的神经网络（即一个隐藏层一个输出层）并对MNIST数据进行分类。
 
+由于github无法上传25MB以上的文件，训练好的模型和本地数据上传到百度网盘：
+
+>链接: [https://pan.baidu.com/s/13w0fg69HxCs5SeSEM9Y9tQ?pwd=fjbu](https://pan.baidu.com/s/13w0fg69HxCs5SeSEM9Y9tQ?pwd=fjbu)
+>提取码: fjbu 
+>复制这段内容后打开百度网盘手机App，操作更方便哦 
+>--来自百度网盘超级会员v6的分享
+
 ## 文件和类
 
 1. `accuracy.svg`   模型训练集和测试集的accuracy收敛图示
@@ -17,21 +24,24 @@
 4. `loss_acc_epoch_test.csv`    训练输出的每个epoch结束时训练集和测试集的loss和accuracy列表
 5. `loss.svg`       模型训练集和测试集的loss收敛图示
 6. `main.py`        主程序
-7. `minst.pkl`      下载好的MNIST数据
-8. `minst.py`       从`http://yann.lecun.com/exdb/mnist/`下载和加载MNIST数据并对数据进行标准化（本脚本引用自斋藤康毅的 **《深度学习入门》** ）
-9. `network.pkl`    以pickle格式保存的训练好的网络
-10. `program_output.txt`     该文本文件保存了运行程序后终端输出的信息（包括Random Grid Search每一轮训练的结果和最终最优参数的训练过程）
-11. `random_grid_search_results.csv`    random grid search每一轮随机生成的超参数和validation的accuracy
-12. `random_grid_search.py` 进行随机网格搜索的函数
-13. `save_load.py`  保存和加载训练好的网络
-14. `sgd.py`        随机梯度下降的类
-15. `shuffle_dataset`   打乱数据以划分随机化的验证集
-16. `test.py`       载入训练好的模型并在测试集上测试
-17. `trainer.pkl`   以pickle格式保存的最终最优参数训练的类（含network以及训练中用到的超参数以及训练各epoch的loss和accuracy）
-18. `trainer.py`    神经网络训练器`Trainer`类
-19. `two_layer_net` 两层神经网络的类`TwoLayerNet`（含根据给定的超参数搭建模型、求loss和accuracy以及实现反向传播的函数）
-20. `vis_param.py`  载入训练好的模型并对两层参数矩阵W1和W2进行可视化（使用imshow热图）
-21. `W1.png`,`W1.svg`,`W2.png`,`W2.svg` 参数矩阵可视化结果
+7. `minst.py`       从`http://yann.lecun.com/exdb/mnist/`下载和加载MNIST数据并对数据进行标准化（本脚本引用自斋藤康毅的 **《深度学习入门》** ）
+8. `program_output.txt`     该文本文件保存了运行程序后终端输出的信息（包括Random Grid Search每一轮训练的结果和最终最优参数的训练过程）
+9. `random_grid_search_results.csv`    random grid search每一轮随机生成的超参数和validation的accuracy
+10. `random_grid_search.py` 进行随机网格搜索的函数
+11. `save_load.py`  保存和加载训练好的网络
+12. `sgd.py`        随机梯度下降的类
+13. `shuffle_dataset`   打乱数据以划分随机化的验证集
+14. `test.py`       载入训练好的模型并在测试集上测试
+15. `trainer.py`    神经网络训练器`Trainer`类
+16. `two_layer_net` 两层神经网络的类`TwoLayerNet`（含根据给定的超参数搭建模型、求loss和accuracy以及实现反向传播的函数）
+17. `vis_param.py`  载入训练好的模型并对两层参数矩阵W1和W2进行可视化（使用imshow热图）
+18. `W1.png`,`W1.svg`,`W2.png`,`W2.svg` 参数矩阵可视化结果
+
+## 位于网盘中的其他文件
+
+1. `mnist.pkl` 下载到本地的MNIST数据
+2. `network.pkl`  保存好的模型
+3. `trainer.pkl`  保存好的训练器，除模型外还包括训练的超参数选择和收敛过程数据
 
 ## 执行步骤
 
