@@ -7,10 +7,10 @@
 
 由于github无法上传25MB以上的文件，训练好的模型和本地数据上传到百度网盘：
 
->链接: [https://pan.baidu.com/s/13w0fg69HxCs5SeSEM9Y9tQ?pwd=fjbu](https://pan.baidu.com/s/13w0fg69HxCs5SeSEM9Y9tQ?pwd=fjbu)
->提取码: fjbu 
->复制这段内容后打开百度网盘手机App，操作更方便哦 
->--来自百度网盘超级会员v6的分享
+>链接: [https://pan.baidu.com/s/13w0fg69HxCs5SeSEM9Y9tQ?pwd=fjbu](https://pan.baidu.com/s/13w0fg69HxCs5SeSEM9Y9tQ?pwd=fjbu) <br>
+>提取码: fjbu <br>
+>复制这段内容后打开百度网盘手机App，操作更方便哦 <br>
+>--来自百度网盘超级会员v6的分享 <br>
 
 ## 文件和类
 
