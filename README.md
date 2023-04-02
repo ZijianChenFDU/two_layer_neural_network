@@ -1,20 +1,30 @@
-2023 Spring DATA620004 神经网络与深度学习 作业1 构建两层神经网络分类器
-===
+---
+title: DATA620004 神经网络与深度学习 作业 1 构建两层神经网络分类器
+author: 陈子健 22110980002
+date: 2023-3-31
+documentclass: ctexart
+geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
+output:
+  rticles::ctex:
+    fig_caption: yes
+    number_sections: no
+    toc: no
+    latex_engine: xelatex
+---
 
-**陈子健 22110980002**
+本项目旨在使用`numpy`实现一个两层的神经网络（即一个隐藏层一个输出层）并对MNIST数据进行分类。
 
-本项目旨在使用numpy实现一个两层的神经网络（即一个隐藏层一个输出层）并对MNIST数据进行分类。
+## 下载项目
 
-由于github无法上传25MB以上的文件，训练好的模型和本地数据上传到百度网盘：
+- Github repo：[https://github.com/ZijianChenFDU/two_layer_neural_network](https://github.com/ZijianChenFDU/two_layer_neural_network)
 
->链接: [https://pan.baidu.com/s/13w0fg69HxCs5SeSEM9Y9tQ?pwd=fjbu](https://pan.baidu.com/s/13w0fg69HxCs5SeSEM9Y9tQ?pwd=fjbu) <br>
->提取码: fjbu <br>
->复制这段内容后打开百度网盘手机App，操作更方便哦 <br>
->--来自百度网盘超级会员v6的分享 <br>
+- 百度网盘：[https://pan.baidu.com/s/13w0fg69HxCs5SeSEM9Y9tQ?pwd=fjbu](https://pan.baidu.com/s/13w0fg69HxCs5SeSEM9Y9tQ?pwd=fjbu)（提取码：`fjbu`）
+
+**由于github上传文件有25MB上限，所以github repo上只有代码，模型在网盘里**
 
 ## 文件和类
 
-1. `accuracy.svg`   模型训练集和测试集的accuracy收敛图示
+1. `accuracy.svg`/`accuracy.png`   模型训练集和测试集的accuracy收敛图示
 2. `functions.py`   要用到的函数（含Relu,Sigmoid,Softmax激活函数及其梯度函数和crossentropy损失函数）
 3. `layers.py`      构建层的类
    1. `Relu`        Relu激活层
@@ -22,32 +32,31 @@
    3. `Affine`      仿射层
    4. `SoftmaxWithLoss`     输出层
 4. `loss_acc_epoch_test.csv`    训练输出的每个epoch结束时训练集和测试集的loss和accuracy列表
-5. `loss.svg`       模型训练集和测试集的loss收敛图示
+5. `loss.svg`/`loss.png`       模型训练集和测试集的loss收敛图示
 6. `main.py`        主程序
-7. `minst.py`       从`http://yann.lecun.com/exdb/mnist/`下载和加载MNIST数据并对数据进行标准化（本脚本引用自斋藤康毅的 **《深度学习入门》** ）
-8. `program_output.txt`     该文本文件保存了运行程序后终端输出的信息（包括Random Grid Search每一轮训练的结果和最终最优参数的训练过程）
-9. `random_grid_search_results.csv`    random grid search每一轮随机生成的超参数和validation的accuracy
-10. `random_grid_search.py` 进行随机网格搜索的函数
-11. `save_load.py`  保存和加载训练好的网络
-12. `sgd.py`        随机梯度下降的类
-13. `shuffle_dataset`   打乱数据以划分随机化的验证集
-14. `test.py`       载入训练好的模型并在测试集上测试
-15. `trainer.py`    神经网络训练器`Trainer`类
-16. `two_layer_net` 两层神经网络的类`TwoLayerNet`（含根据给定的超参数搭建模型、求loss和accuracy以及实现反向传播的函数）
-17. `vis_param.py`  载入训练好的模型并对两层参数矩阵W1和W2进行可视化（使用imshow热图）
-18. `W1.png`,`W1.svg`,`W2.png`,`W2.svg` 参数矩阵可视化结果
-
-## 位于网盘中的其他文件
-
-1. `mnist.pkl` 下载到本地的MNIST数据
-2. `network.pkl`  保存好的模型
-3. `trainer.pkl`  保存好的训练器，除模型外还包括训练的超参数选择和收敛过程数据
+7. `minst.pkl`      下载好的MNIST数据
+8. `minst.py`       从`http://yann.lecun.com/exdb/mnist/`下载和加载MNIST数据并对数据进行标准化（本脚本引用自斋藤康毅的 **《深度学习入门》** ）
+9. `network.pkl`    以pickle格式保存的训练好的网络
+10. `plot_without_training.py`    加载保存好的训练器`trainer.pkl`并绘制png和svg格式的收敛曲线
+11. `program_output.txt`     该文本文件保存了运行程序后终端输出的信息（包括Random Grid Search每一轮训练的结果和最终最优参数的训练过程）
+12. `random_grid_search_results.csv`    random grid search每一轮随机生成的超参数和validation的accuracy
+13. `random_grid_search.py` 进行随机网格搜索的函数
+14. `save_load.py`  保存和加载训练好的网络
+15. `sgd.py`        随机梯度下降的类
+16. `shuffle_dataset`   打乱数据以划分随机化的验证集
+17. `test.py`       载入训练好的模型并在测试集上测试
+18. `trainer.pkl`   以pickle格式保存的最终最优参数训练的类（含network以及训练中用到的超参数以及训练各epoch的loss和accuracy）
+19. `trainer.py`    神经网络训练器`Trainer`类
+20. `two_layer_net` 两层神经网络的类`TwoLayerNet`（含根据给定的超参数搭建模型、求loss和accuracy以及实现反向传播的函数）
+21. `vis_param.py`  载入训练好的模型并对两层参数矩阵W1和W2进行可视化（使用imshow热图）
+22. `W1.png`/`W1.svg`/`W2.png`/`W2.svg` 参数矩阵可视化结果
 
 ## 执行步骤
 
-1. 运行`main.py`获得收敛两幅图示并生成`network.pkl`以及`trainer.pkl`（可调整里面的注释跳过Random Grid Search直接使用之前的到的最有超参数训练一次）
-2. 运行`test.py`加载上一步保存的网络并计算在测试集上的accuracy
-3. 运行`vis_param.py`对参数进行可视化
+1. 运行`main.py`完成超参数查找和模型训练，运行结束后获得两幅收敛曲线并生成`network.pkl`以及`trainer.pkl`（可调整里面的注释跳过Random Grid Search直接使用之前的到的最有超参数训练一次）;
+2. （可选）运行`plot_without_training.py`加载上一步保存好的`trainer.py`绘制收敛曲线;
+3. 运行`test.py`加载第一步保存的网络`network.pkl`并计算在测试集上的accuracy;
+4. 运行`vis_param.py`对参数进行可视化获得W1和W2两张矩阵的热图.
 
 ## 运行时间
 
@@ -68,6 +77,8 @@
 ### 超参数搜索
 
 超参数搜索结果如下表
+
+<font size=2>
 
 |    | lr                  | weight decay           | hidden size | val acc            |
 |----|---------------------|------------------------|-------------|--------------------|
@@ -121,6 +132,7 @@
 | 47 | 0.1837956553060056  | 1.1123971947399937e-05 | 272.0       | 0.9778333333333333 |
 | 48 | 0.173992725287063   | 1.2550886498731752e-06 | 251.0       | 0.9775833333333334 |
 | 49 | 0.16568008320205896 | 8.232293894034082e-07  | 219.0       | 0.97725            |
+<font>
 
 最终选择的最有超参数为
 - `lr = 0.247521572190421` 
@@ -134,17 +146,15 @@
 
 ### 最终训练结果
 
-最终得到的模型测试及表现为98.08%（通过观察各epoch训练结果发现还得到过98.19%的结果，说明模型到后面出现了一定程度的过拟合），以下为训练的loss和accuracy的图示（作图时去掉第一个epoch防止出现第一个epoch的loss过高和accuracy过低导致后面的结果在纵轴上基本持平难以辨认）。从loss的收敛图示中也可看出后面一些epoch的test loss略微上升，体现出一定程度的过拟合现象。
+最终得到的模型测试及表现为98.08%（通过观察各epoch训练结果发现还得到过98.19%的结果，说明模型到后面出现了一定程度的过拟合），以下为训练的loss和accuracy的图示（图\ref{fig:loss}、图\ref{fig:acc}）。作图时去掉第一个epoch防止出现第一个epoch的loss过高和accuracy过低导致后面的结果在纵轴上基本持平难以辨认）。从loss的收敛图示中也可看出后面一些epoch的test loss略微上升，体现出一定程度的过拟合现象。
 
-#### Loss
+![loss收敛图示 \label{fig:loss}](loss.svg)
 
-![loss_epoch_list](loss.svg "loss收敛图示")
-
-#### Accuracy
-
-![acc_epoch_list](accuracy.svg "accuracy收敛图示")
+![accuracy收敛图示 \label{fig:acc}](accuracy.svg)
 
 #### 图中的训练收敛过程详细数据
+
+<font size=2>
 
 | epoch | train loss            | test loss           | train acc          | test acc |
 |-------|-----------------------|---------------------|--------------------|----------|
@@ -197,17 +207,15 @@
 | 48.0  | 0.002740117495622836  | 0.06882312866499317 | 0.9999833333333333 | 0.9807   |
 | 49.0  | 0.0027284348608085777 | 0.0683929339379065  | 0.9999833333333333 | 0.9806   |
 | 50.0  | 0.002565100407469506  | 0.06950715262750833 | 1.0                | 0.9813   |
+<font>
 
 
+## 参数可视化结果
 
-### 参数可视化结果
+用`matplotlib.pyplot.imshow`进行简单的参数矩阵可视化。图\ref{fig:w1}为第一层（输入到隐藏）；图\ref{fig:w2}为第二层（从隐藏到输出）。
 
-用`matplotlib.pyplot.imshow`进行简单的参数矩阵可视化
 
-#### $W_1\ (784\times 292)$
+![$W_1\ (784\times 292)$ \label{fig:w1}](W1.svg)
 
-![W1](W1.svg "$W_1$")
 
-#### $W_2\ (292\times 10)$ 
-
-![W2](W2.svg "$W_2$")
+![$W_2\ (292\times 10)$ \label{fig:w2}](W2.svg)
