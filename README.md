@@ -1,16 +1,6 @@
----
-title: DATA620004 神经网络与深度学习 作业 1 构建两层神经网络分类器
-author: 陈子健 22110980002
-date: 2023-3-31
-documentclass: ctexart
-geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
-output:
-  rticles::ctex:
-    fig_caption: yes
-    number_sections: no
-    toc: no
-    latex_engine: xelatex
----
+# DATA620004 神经网络与深度学习 作业 1 构建两层神经网络分类器
+**陈子健 22110980002**
+**2023-3-31**
 
 本项目旨在使用`numpy`实现一个两层的神经网络（即一个隐藏层一个输出层）并对MNIST数据进行分类。
 
